@@ -1,0 +1,23 @@
+{
+  "translations": {
+    "Der VulnDex Beacon für Nextcloud übermittelt die aktuelle Nextcloud-Version, technische Informationen und installierte App-Versionen an VulnDex. In den VulnDex Docs &raquo; %1$s befinden sich weitere Informationen.": "Der VulnDex Beacon für Nextcloud übermittelt die aktuelle Nextcloud-Version, technische Informationen und installierte App-Versionen an VulnDex. In den VulnDex Docs &raquo; %1$s befinden sich weitere Informationen.",
+    "API-Schlüssel": "API-Schlüssel",
+    "✓ API-Schlüssel ist gesetzt": "✓ API-Schlüssel ist gesetzt",
+    "API-Schlüssel eingeben": "API-Schlüssel eingeben",
+    "Speichern": "Speichern",
+    "Letzte Meldung": "Letzte Meldung",
+    "Status": "Status",
+    "✓ Erfolgreich": "✓ Erfolgreich",
+    "✗ Fehler": "✗ Fehler",
+    "Server Rückmeldung": "Server Rückmeldung",
+    "Jetzt senden": "Jetzt senden",
+    "Aktueller Status": "Aktueller Status",
+    "Kein API-Schlüssel gesetzt.": "Kein API-Schlüssel gesetzt.",
+    "API-Schlüssel entfernt.": "API-Schlüssel entfernt.",
+    "Ungültiges Format für den API-Schlüssel.": "Ungültiges Format für den API-Schlüssel.",
+    "API-Schlüssel gespeichert.": "API-Schlüssel gespeichert.",
+    "Fehler beim Laden": "API-Schlüssel gespeichert.",
+    "Noch nie gesendet": "Noch nie gesendet",
+    "Für die Integration benötigen Sie einen API-Schlüssel. Diesen erhalten Sie über die VulnDex-Plattform.": "Für die Integration benötigen Sie einen API-Schlüssel. Diesen erhalten Sie über die VulnDex-Plattform."
+  }
+}
