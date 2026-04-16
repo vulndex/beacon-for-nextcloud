@@ -19,7 +19,7 @@ There, the data is cross-referenced against known vulnerabilities (CVEs), which 
 This provides a continuous overview of connected Nextcloud instances and their security status.
 
 An active VulnDex account is required.]]></description>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<licence>AGPL-3.0-or-later</licence>
 	<author mail="oliver@kerzinger.at" homepage="https://vulndex.at">Oliver Kerzinger</author>
 	<namespace>VulnDexBeacon</namespace>

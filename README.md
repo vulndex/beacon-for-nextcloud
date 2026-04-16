@@ -4,6 +4,8 @@ The VulnDex Beacon for Nextcloud automatically collects version and system infor
 
 The aim is to provide a central overview of installed instances and to cross-reference them with known vulnerabilities (CVEs) at an early stage.
 
+An active VulnDex subscription and [API key](https://vulndex.at/docs/10-vulndex-docs/136-beacon-fur-moodle) is required.
+
 ## Features
 
 - Automatic detection of the Nextcloud version

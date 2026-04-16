@@ -18,6 +18,12 @@ use OCP\IRequest;
 use OCP\IURLGenerator;
 use Psr\Log\LoggerInterface;
 
+/**
+ * Service responsible for handling beacon-related functionalities such as
+ * data aggregation, API communication, and logging data transmission status.
+ * Provides methods to collect client environment data, generate payloads,
+ * and send beacons to external services.
+ */
 class BeaconService
 {
 
@@ -61,12 +67,28 @@ class BeaconService
 		$this->l             = $l1;
 	}
 
+
+	/**
+	 * Retrieves the API key from the configuration.
+	 *
+	 * @return string Returns the API key as a string. If no API key is set, returns an empty string.
+	 */
 	public function getApiKey(): string
 	{
 		return (string)$this->config->getValueString(Application::APP_ID, 'api_key', '');
 	}
 
 
+	/**
+	 * Collects data to be included in the payload for sending to a remote endpoint.
+	 * The data contains metadata about the server, installed applications, and a timestamp.
+	 *
+	 * @return array Returns an associative array containing:
+	 * - 'sent_at' (string): The timestamp in ISO 8601 format when the data was collected.
+	 * - 'node_id' (string): A unique identifier for the node.
+	 * - 'instance' (array): Information about the server instance.
+	 * - 'apps' (array): A list of installed applications and their details.
+	 */
 	public function collectData(): array
 	{
 		return [
@@ -77,6 +99,14 @@ class BeaconService
 		];
 	}
 
+
+	/**
+	 * Sends a beacon by creating and dispatching a payload to a predefined endpoint.
+	 * Utilizes an API key for authentication and processes the server's response.
+	 * In case of an error, it logs the details and retrieves the last send attempt.
+	 *
+	 * @return array Returns an associative array containing:
+	 * - 'success' (bool): Indicates if*/
 	public function sendBeacon(): array
 	{
 		$apiKey = $this->getApiKey();
@@ -169,6 +199,13 @@ class BeaconService
 	}
 
 
+	/**
+	 * Saves the details of the last send attempt, including the success status, timestamp, and message.
+	 *
+	 * @param bool $success Indicates whether the last send attempt was successful.
+	 * @param string $message A message providing information about the result of the last send attempt.
+	 * @return void
+	 */
 	private function saveLastSend(bool $success, string $message): void
 	{
 		$timestamp = time();
@@ -182,6 +219,15 @@ class BeaconService
 	}
 
 
+	/**
+	 * Retrieves server information, including application version, base URL, server name, and IP address.
+	 *
+	 * @return array Returns an associative array containing:
+	 * - 'nextcloud_version' (string): The version of the Nextcloud application.
+	 * - 'url' (string): The absolute base URL of the server.
+	 * - 'server_name' (string): The host name of the server.
+	 * - 'ip_address' (string): The IP address of the server.
+	 */
 	private function getServerInfo(): array
 	{
 		$baseUrl    = $this->urlGenerator->getAbsoluteURL('/');
@@ -197,6 +243,16 @@ class BeaconService
 		];
 	}
 
+	/**
+	 * Retrieves a list of installed applications along with their details.
+	 * The details include the application ID, name, version, and installation status.
+	 *
+	 * @return array Returns an array of associative arrays, each containing:
+	 * - 'id' (string): The unique identifier of the application.
+	 * - 'name' (string): The display name of the application. Defaults to the application ID if not available.
+	 * - 'version' (string): The version of the application. Defaults to an empty string if not available.
+	 * - 'enabled' (bool): Whether the application is installed and enabled.
+	 */
 	private function getInstalledApps(): array
 	{
 		$apps = $this->appManager->getInstalledApps();

@@ -15,6 +15,10 @@ use OCP\IAppConfig;
 use OCP\IL10N;
 use Psr\Log\LoggerInterface;
 
+/**
+ * Represents the main application class that extends the base application functionality
+ * and implements the IBootstrap interface.
+ */
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'vulndexbeacon';
 
@@ -26,6 +30,11 @@ class Application extends App implements IBootstrap {
 
 	}
 
+	/**
+	 * Generates a unique node identifier.
+	 *
+	 * @return string A string representing a unique node ID, generated using random bytes or a fallback to a prefixed unique ID.
+	 */
 	private static function generateNodeId(): string {
 		try {
 			return bin2hex(random_bytes(16));
@@ -34,6 +43,12 @@ class Application extends App implements IBootstrap {
 		}
 	}
 
+	/**
+	 * Registers services and dependencies within the provided registration context.
+	 *
+	 * @param IRegistrationContext $context The registration context used to register the services.
+	 * @return void
+	 */
 	public function register(IRegistrationContext $context): void {
 
 		$context->registerService(BeaconService::class, function ($c) {
@@ -53,6 +68,12 @@ class Application extends App implements IBootstrap {
 
 	}
 
+	/**
+	 * Boots the application by setting up necessary configuration values if they are not already defined.
+	 *
+	 * @param IBootContext $context The context used during the boot process, providing access to the server container and configuration.
+	 * @return void
+	 */
 	public function boot(IBootContext $context): void {
 
 		$appConfig = $context->getServerContainer()->get(IAppConfig::class);
