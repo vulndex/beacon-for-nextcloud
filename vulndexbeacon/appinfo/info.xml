@@ -31,7 +31,7 @@ An active VulnDex account is required.]]></description>
 	<bugs>https://github.com/vulndex/beacon-for-nextcloud/issues</bugs>
 	<screenshot>https://static.vulndex.at/img/beacon/beacon-for-nextcloud-screenshot.jpg</screenshot>
 	<dependencies>
-		<nextcloud min-version="31" max-version="32"/>
+		<nextcloud min-version="32" max-version="33"/>
 	</dependencies>
 	<background-jobs>
 		<job>OCA\VulnDexBeacon\BackgroundJob\SendBeaconJob</job>
